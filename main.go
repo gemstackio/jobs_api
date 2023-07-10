@@ -1,14 +1,19 @@
 package main
 
 import (
-	"github.com/gemstack/jobs-api/routes"
+	"github.com/gin-gonic/gin"
+	"github.com/gemstack/jobs-api/controllers"
+	"github.com/gemstack/jobs-api/utils"
 )
 
 func main() {
-	//r := gin.Default()
+	r := gin.Default()
+
+	// Enable CORS middleware
+	r.Use(utils.CORSMiddleware())
 
 	// Define your routes and handlers here
-	r := routes.SetupRoutes()
+	r.GET("/", controllers.GetHomePage)
 
 	r.Run(":8080")
 }
