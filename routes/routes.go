@@ -11,6 +11,7 @@ func SetupRoutes() *gin.Engine {
 
 	// Enable CORS middleware
 	r.Use(utils.CORSMiddleware())
+	r.GET("/gjobs", controllers.GoogleSearchAPI)
 	r.GET("/", controllers.GetHomePage)
 
 	return r
